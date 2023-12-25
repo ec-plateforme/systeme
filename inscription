@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recherche de contact</title>
+  <style>
+    input[type="text"] {
+      padding: 8px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <label for="phone">Entrez un numéro de téléphone :</label>
+  <input type="text" id="phoneInput" placeholder="Entrez un numéro">
+  <button onclick="findContact()">Rechercher</button>
+
+  <div id="result"></div>
+
+  <script>
+    const contacts = [
+      {
+        name: "MAHMOUD EICH",
+        phone: "23803449",
+        price: "240 dinars"
+      },
+      {
+        name: "SOUHAYEB GHARBI",
+        phone: "28055935",
+        price: "240 dinars"
+      },
+      {
+        name: "MOUHAMED AZIZ MAMI",
+        phone: "98248686",
+        price: "240 dinars"
+      },
+      {
+        name: "FARAH YAZIDI",
+        phone: "27202507",
+        price: "240 dinars"
+      },
+      {
+        name: "MOUHAMED LOUAY CHERIF",
+        phone: "28899877",
+        price: "240 dinars"
+      },
+      {
+        name: "LILIA LASOUED",
+        phone: "20401273",
+        price: "240 dinars"
+      },
+      // Ajoutez d'autres contacts ici au besoin
+    ];
+
+    function findContact() {
+      const phoneInput = document.getElementById("phoneInput").value;
+      const resultDiv = document.getElementById("result");
+      
+      const foundContact = contacts.find(contact => contact.phone === phoneInput);
+      
+      if (foundContact) {
+        const { name, price } = foundContact;
+        resultDiv.innerText = `${name}\t${phoneInput}\t${price}`;
+      } else {
+        resultDiv.innerText = "Aucun contact trouvé pour ce numéro de téléphone.";
+      }
+    }
+  </script>
+
+</body>
+</html>
